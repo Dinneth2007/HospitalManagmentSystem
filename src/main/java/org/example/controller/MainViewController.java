@@ -20,8 +20,11 @@ public class MainViewController {
     }
 
     @FXML
-    void BtnActionDoctorReg(ActionEvent event) {
+    void BtnActionDoctorReg(ActionEvent event) throws IOException {
+        Stage stage=new Stage();
 
+        stage.setScene(new Scene(FXMLLoader.load(getClass().getResource("/view/DoctorManagerView.fxml"))));
+        stage.show();
     }
 
     @FXML
