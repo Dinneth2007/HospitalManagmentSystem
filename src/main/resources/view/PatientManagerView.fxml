@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.controller.PatientmanagerViewController">
+   <children>
+      <Label alignment="CENTER" prefHeight="58.0" prefWidth="600.0" text="Patient Manager">
+         <font>
+            <Font name="System Bold" size="24.0" />
+         </font>
+      </Label>
+      <TextField fx:id="txtId" layoutX="56.0" layoutY="65.0" promptText="id" />
+      <TextField fx:id="txtAge" layoutX="56.0" layoutY="115.0" promptText="age" />
+      <TextField fx:id="txtGender" layoutX="390.0" layoutY="109.0" promptText="gender" />
+      <TextField fx:id="txtName" layoutX="390.0" layoutY="65.0" promptText="name" />
+      <TextField fx:id="txtContact" layoutX="56.0" layoutY="168.0" promptText="contact details" />
+      <TextField fx:id="txtEmergencyCtct" layoutX="390.0" layoutY="168.0" promptText="emergency contact" />
+      <TextArea fx:id="txtMedicalHistory" layoutX="110.0" layoutY="223.0" prefHeight="85.0" prefWidth="381.0" promptText="Medical History" />
+      <Button fx:id="BtnDlt" layoutX="363.0" layoutY="329.0" mnemonicParsing="false" onAction="#BtnActionDelete" text="Delete" />
+      <Button fx:id="BtnUpdate" layoutX="443.0" layoutY="330.0" mnemonicParsing="false" onAction="#BtnActionUpdate" text="Update" />
+      <Button fx:id="BtnView" layoutX="522.0" layoutY="330.0" mnemonicParsing="false" onAction="#BtnActionView" text="View" />
+      <Button fx:id="BtnAdd" layoutX="293.0" layoutY="330.0" mnemonicParsing="false" onAction="#BtnActionAdd" text="Add" />
+   </children>
+</AnchorPane>

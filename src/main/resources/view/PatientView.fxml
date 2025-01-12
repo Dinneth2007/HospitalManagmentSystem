@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+
+<AnchorPane prefHeight="397.0" prefWidth="716.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.controller.PatientTableViewController">
+   <children>
+      <Button fx:id="BtnReload" layoutX="607.0" layoutY="357.0" mnemonicParsing="false" onAction="#BtnOnActionReload" prefHeight="27.0" prefWidth="72.0" text="Reload" />
+      <TableView fx:id="table" layoutY="155.0" prefHeight="200.0" prefWidth="721.0">
+        <columns>
+          <TableColumn fx:id="idcol" prefWidth="75.0" text="patient ID" />
+          <TableColumn fx:id="namecol" prefWidth="120.95677185058594" text="name" />
+            <TableColumn fx:id="agecol" prefWidth="72.04322814941406" text="age" />
+            <TableColumn fx:id="gendercol" prefWidth="73.17662048339844" text="gender" />
+            <TableColumn fx:id="contactcol" prefWidth="85.76556396484375" text="contact" />
+            <TableColumn fx:id="emergencycol" prefWidth="106.82089233398438" text="emergency contact" />
+            <TableColumn fx:id="mhcol" prefWidth="185.0" text="medical history" />
+        </columns>
+      </TableView>
+      <Label alignment="CENTER" layoutX="7.0" layoutY="-1.0" prefHeight="71.0" prefWidth="737.0" text="Patient Details">
+         <font>
+            <Font name="System Bold" size="24.0" />
+         </font>
+      </Label>
+   </children>
+</AnchorPane>
