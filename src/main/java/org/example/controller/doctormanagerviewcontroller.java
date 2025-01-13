@@ -1,13 +1,21 @@
 package org.example.controller;
 
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.control.Button;
-import javafx.scene.control.TextArea;
-import javafx.scene.control.TextField;
+import javafx.fxml.Initializable;
+import javafx.scene.control.*;
+import org.example.model.Doctor;
 
-public class doctormanagerviewcontroller {
+import java.net.URL;
+import java.sql.SQLException;
+import java.util.ResourceBundle;
 
+public class doctormanagerviewcontroller implements Initializable {
+    public DatePicker dataPicker;
+    public ComboBox datesavailable;
+    DoctorController controller;
     @FXML
     private Button BtnAdd;
 
@@ -20,8 +28,7 @@ public class doctormanagerviewcontroller {
     @FXML
     private Button BtnUpdate;
 
-    @FXML
-    private TextField txtAvailabilty;
+
 
     @FXML
     private TextField txtContact;
@@ -40,7 +47,11 @@ public class doctormanagerviewcontroller {
 
     @FXML
     void BtnOnActionAdd(ActionEvent event) {
-
+        try {
+            System.out.println(controller.add(new Doctor(txtName.getText(),txtSpeciality.getText(),datesavailable.getValue().toString(),txtQuali.getText(),txtContact.getText())));
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());;
+        }
     }
 
     @FXML
@@ -58,4 +69,20 @@ public class doctormanagerviewcontroller {
 
     }
 
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+        controller=new DoctorController();
+        loadTitles();
+    }
+    public void loadTitles(){
+        ObservableList<String> titleLists= FXCollections.observableArrayList();
+        titleLists.add("Monday");
+        titleLists.add("Tuesday");
+        titleLists.add("Wednesday");
+        titleLists.add("Thurday");
+        titleLists.add("Friday");
+        titleLists.add("Saturday");
+        titleLists.add("Sunday");
+        datesavailable.setItems(titleLists);
+    }
 }
