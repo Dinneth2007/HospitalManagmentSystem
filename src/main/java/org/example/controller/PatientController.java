@@ -70,6 +70,22 @@ public class PatientController {
 
         return res>0?true:false;
     }
+    public Patient serachById(String ID) throws SQLException {
+        String SQL = "Select * From Patient WHERE patient_id="+ID;
+        Statement stm = connection.createStatement();
+        ResultSet rst = stm.executeQuery(SQL);
+        while (rst.next()) {
+            int id = Integer.parseInt(rst.getString("patient_id"));
+            String name = rst.getString("name");
+            int age = Integer.parseInt(rst.getString("age"));
+            String gender = rst.getString("gender");
+            String contact_details = rst.getString("contact_details");
+            String emergency_ctct= rst.getString("emergency_contact");
+            String medical_history = rst.getString("medical_history");
+            return new Patient(id,name,age,gender,contact_details,emergency_ctct,medical_history);
+        }
+        return null;
+    }
     public java.util.List<Patient> getPatients() throws SQLException {
         List<Patient> PatientList=new ArrayList<>();
         String SQL = "Select * From Patient";

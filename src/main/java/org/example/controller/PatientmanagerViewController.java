@@ -17,6 +17,7 @@ import java.sql.SQLException;
 import java.util.ResourceBundle;
 
 public class PatientmanagerViewController implements Initializable{
+    public Button BtnSearchByID;
     PatientController controller;
     @FXML
     private Button BtnAdd;
@@ -90,5 +91,17 @@ public class PatientmanagerViewController implements Initializable{
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         controller=new PatientController();
+    }
+
+    public void BtnActionSearchByID(ActionEvent actionEvent) throws SQLException {
+        Patient patient=controller.serachById(txtId.getText());
+        txtName.setText(patient.getName());
+        txtContact.setText(patient.getContact_details());
+        txtEmergencyCtct.setText(patient.getEmergency_contact());
+        txtAge.setText(String.valueOf(patient.getAge()));
+        txtGender.setText(patient.getGender());
+        txtMedicalHistory.setText(patient.getMedical_history());
+
+
     }
 }
