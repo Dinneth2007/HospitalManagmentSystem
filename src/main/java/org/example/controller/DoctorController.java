@@ -45,7 +45,7 @@ public class DoctorController {
     }
 
     public boolean update(Doctor doc) throws SQLException {
-        String SQL = "UPDATE DOCTOR SET NAME=?,SPECIALITY=?,AVAILABILTY=?,QUALIFICATIONS=?,CONTACT_DETAILS=? WHERE DOCTOR_ID=?";
+        String SQL = "UPDATE DOCTOR SET NAME=?,specialty=?,availability=?,QUALIFICATIONS=?,CONTACT_DETAILS=? WHERE DOCTOR_ID=?";
         PreparedStatement stm = connection.prepareStatement(SQL);
 
         stm.setObject(1, doc.getName());
@@ -53,7 +53,7 @@ public class DoctorController {
         stm.setObject(3, doc.getAvailabilty());
         stm.setObject(4, doc.getQualifications());
         stm.setObject(5, doc.getContact_details());
-        stm.setObject(5, doc.getId());
+        stm.setObject(6, doc.getId());
         int res=stm.executeUpdate();
 
 

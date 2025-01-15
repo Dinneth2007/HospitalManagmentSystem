@@ -26,5 +26,6 @@
       <Button fx:id="BtnView" layoutX="469.0" layoutY="330.0" mnemonicParsing="false" onAction="#BtnActionView" text="View" />
       <Button fx:id="BtnAdd" layoutX="267.0" layoutY="330.0" mnemonicParsing="false" onAction="#BtnActionAdd" text="Add" />
       <Button fx:id="BtnSearchByID" layoutX="522.0" layoutY="330.0" mnemonicParsing="false" onAction="#BtnActionSearchByID" text="Serach by Id" />
+      <Button fx:id="BtnClear" layoutX="593.0" layoutY="16.0" mnemonicParsing="false" onAction="#BtnActionClear" text="Clear" />
    </children>
 </AnchorPane>

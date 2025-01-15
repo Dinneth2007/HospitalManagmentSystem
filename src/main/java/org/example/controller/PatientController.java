@@ -70,6 +70,7 @@ public class PatientController {
 
         return res>0?true:false;
     }
+
     public Patient serachById(String ID) throws SQLException {
         String SQL = "Select * From Patient WHERE patient_id="+ID;
         Statement stm = connection.createStatement();

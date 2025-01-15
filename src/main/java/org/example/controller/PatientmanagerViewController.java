@@ -18,6 +18,7 @@ import java.util.ResourceBundle;
 
 public class PatientmanagerViewController implements Initializable{
     public Button BtnSearchByID;
+    public Button BtnClear;
     PatientController controller;
     @FXML
     private Button BtnAdd;
@@ -73,6 +74,7 @@ public class PatientmanagerViewController implements Initializable{
 
     @FXML
     void BtnActionUpdate(ActionEvent event) {
+
         try {
             System.out.println(controller.update(new Patient(Integer.parseInt(txtId.getText()),txtName.getText(),Integer.parseInt(txtAge.getText()),txtGender.getText(),txtContact.getText(),txtEmergencyCtct.getText(),txtMedicalHistory.getText()))==true?"Updated Sucessfully":"Error");
         } catch (SQLException e) {
@@ -94,14 +96,34 @@ public class PatientmanagerViewController implements Initializable{
     }
 
     public void BtnActionSearchByID(ActionEvent actionEvent) throws SQLException {
-        Patient patient=controller.serachById(txtId.getText());
+        setValues(controller.serachById(txtId.getText()));
+
+
+
+    }
+    private void setValues(Patient patient){
         txtName.setText(patient.getName());
         txtContact.setText(patient.getContact_details());
         txtEmergencyCtct.setText(patient.getEmergency_contact());
         txtAge.setText(String.valueOf(patient.getAge()));
         txtGender.setText(patient.getGender());
         txtMedicalHistory.setText(patient.getMedical_history());
+    }
+    private void clear(){
+        txtId.clear();
+        txtName.clear();
+        txtAge.clear();
+        txtGender.clear();
+        txtContact.clear();
+        txtEmergencyCtct.clear();
+        txtMedicalHistory.clear();
 
 
+
+
+    }
+
+    public void BtnActionClear(ActionEvent actionEvent) {
+        clear();
     }
 }

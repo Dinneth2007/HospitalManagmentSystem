@@ -56,7 +56,14 @@ public class doctormanagerviewcontroller implements Initializable {
 
     @FXML
     void BtnOnActionDelete(ActionEvent event) {
+        try {
+            if (controller.delete(Integer.parseInt(txtID.getText()))){
+                new Alert(Alert.AlertType.CONFIRMATION,"Deleted Sucessfuly").show();
+            }
 
+        } catch (SQLException e) {
+            new Alert(Alert.AlertType.ERROR,e.getMessage()).show();
+        }
     }
 
     @FXML
@@ -66,7 +73,12 @@ public class doctormanagerviewcontroller implements Initializable {
 
     @FXML
     void BtnOnActionUpdate(ActionEvent event) {
-
+        try {
+            controller.update(new Doctor(Integer.parseInt(txtID.getText()),txtName.getText(),txtSpeciality.getText(),datesavailable.getValue().toString(),txtQuali.getText(),txtContact.getText()));
+            new Alert(Alert.AlertType.CONFIRMATION,"Updated SucessFuly").show();
+        } catch (SQLException e) {
+            new Alert(Alert.AlertType.CONFIRMATION,e.getMessage()).show();
+        }
     }
 
     @Override
