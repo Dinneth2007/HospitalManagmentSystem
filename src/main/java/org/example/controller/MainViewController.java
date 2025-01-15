@@ -15,8 +15,11 @@ public class MainViewController {
     private Button BtnPatientReg;
 
     @FXML
-    void BtnActionAppointmentManager(ActionEvent event) {
+    void BtnActionAppointmentManager(ActionEvent event) throws IOException {
+        Stage stage=new Stage();
 
+        stage.setScene(new Scene(FXMLLoader.load(getClass().getResource("/view/AppointmentManagerView.fxml"))));
+        stage.show();
     }
 
     @FXML

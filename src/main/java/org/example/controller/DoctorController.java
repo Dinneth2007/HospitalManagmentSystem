@@ -29,7 +29,7 @@ public class DoctorController {
         String SQL = "Insert into Doctor(name,specialty,availability,qualifications,contact_details) Values(?,?,?,?,?)";
         PreparedStatement stm = connection.prepareStatement(SQL);
 
-        stm.setObject(1, doc.getName());
+        stm.setObject(1, "Dr "+doc.getName());
         stm.setObject(2, doc.getSpeciality());
         stm.setObject(3, doc.getAvailabilty());
         stm.setObject(4, doc.getQualifications());
