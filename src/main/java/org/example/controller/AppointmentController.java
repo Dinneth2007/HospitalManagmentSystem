@@ -14,6 +14,11 @@ public class AppointmentController {
     public AppointmentController() throws SQLException, ClassNotFoundException {
         connection=DBConnection.getInstance().getConnection();
     }
+    public int getLastAppointmentId() throws SQLException {
+        String SQL = "Insert into Appointment(patient_id,doctor_id,appointment_date,time) Values(?,?,?,?)";
+        PreparedStatement stm = connection.prepareStatement(SQL);
+        return 0;
+    }
     public boolean addAppointment(Appointment appointment) throws SQLException {
         String SQL = "Insert into Appointment(patient_id,doctor_id,appointment_date,time) Values(?,?,?,?)";
         PreparedStatement stm = connection.prepareStatement(SQL);

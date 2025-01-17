@@ -15,7 +15,7 @@ public class DoctorController {
 
     Connection connection;
 
-    {
+    DoctorController(){
         try {
             connection = DBConnection.getInstance().getConnection();
         } catch (SQLException e) {
@@ -24,7 +24,12 @@ public class DoctorController {
             throw new RuntimeException(e);
         }
     }
-
+    public static int loadNewDoctorId() throws SQLException, ClassNotFoundException {
+        Connection connection = DBConnection.getInstance().getConnection();
+        Statement stm = connection.createStatement();
+        ResultSet rst = stm.executeQuery("SELECT doctor_id FROM Doctor ORDER BY doctor_id DESC LIMIT 1");
+        return rst.next() ? rst.getInt("doctor_id")+1 : 0;
+    }
     public boolean add(Doctor doc) throws SQLException {
         String SQL = "Insert into Doctor(name,specialty,availability,qualifications,contact_details) Values(?,?,?,?,?)";
         PreparedStatement stm = connection.prepareStatement(SQL);
@@ -69,6 +74,22 @@ public class DoctorController {
 
 
         return res>0?true:false;
+    }
+    public Doctor serachById(String ID) throws SQLException {
+        String SQL = "Select * From doctor WHERE doctor_id="+ID;
+        Statement stm = connection.createStatement();
+        ResultSet rst = stm.executeQuery(SQL);
+        while (rst.next()) {
+            int id = Integer.parseInt(rst.getString("doctor_id"));
+            String name = rst.getString("name");
+            String speciality = rst.getString("specialty");
+            String availabilty = rst.getString("availability");
+            String contact_details = rst.getString("contact_details");
+            String qualifications= rst.getString("qualifications");
+
+            return new Doctor(id,name,speciality,availabilty,qualifications,contact_details);
+        }
+        return null;
     }
     public List<Doctor> getDoctors() throws SQLException {
         List<Doctor> DoctorList=new ArrayList<>();

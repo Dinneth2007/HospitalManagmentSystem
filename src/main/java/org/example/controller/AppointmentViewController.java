@@ -17,6 +17,7 @@ import java.sql.Statement;
 import java.util.ResourceBundle;
 
 public class AppointmentViewController implements Initializable {
+    public DatePicker AppointmentDatePicker;
     AppointmentController controller;
     @FXML
     private Button BtnBook;
@@ -44,7 +45,7 @@ public class AppointmentViewController implements Initializable {
 
     @FXML
     void BtnActionBook(ActionEvent event) throws SQLException {
-        if(controller.addAppointment(new Appointment(Integer.parseInt(DropPatientId.getValue().toString()),Integer.parseInt(DropDoctorId.getValue().toString()),txtDate.getText(),txtTime.getText()))){
+        if(controller.addAppointment(new Appointment(Integer.parseInt(DropPatientId.getValue().toString()),Integer.parseInt(DropDoctorId.getValue().toString()),AppointmentDatePicker.getValue(),txtTime.getText()))){
             new Alert(Alert.AlertType.CONFIRMATION,"Appointment Booked Sucessfuly!!").show();
         }else{
             new Alert(Alert.AlertType.ERROR,"Error Occured").show();
@@ -96,6 +97,7 @@ public class AppointmentViewController implements Initializable {
     }
 
     public void DropDoctorAction(ActionEvent actionEvent) {
+
         lblDoctorName.setText(DropDoctorId.getValue().toString());
     }
 }

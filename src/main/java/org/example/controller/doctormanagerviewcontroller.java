@@ -7,6 +7,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import org.example.model.Doctor;
+import org.example.model.Patient;
 
 import java.net.URL;
 import java.sql.SQLException;
@@ -67,8 +68,8 @@ public class doctormanagerviewcontroller implements Initializable {
     }
 
     @FXML
-    void BtnOnActionSearch(ActionEvent event) {
-
+    void BtnOnActionSearch(ActionEvent event) throws SQLException {
+        setValues(controller.serachById(txtID.getText()));
     }
 
     @FXML
@@ -84,7 +85,22 @@ public class doctormanagerviewcontroller implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         controller=new DoctorController();
+        try {
+            txtID.setText(String.valueOf(controller.loadNewDoctorId()));
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        } catch (ClassNotFoundException e) {
+            throw new RuntimeException(e);
+        }
         loadTitles();
+    }
+    private void setValues(Doctor doctor){
+        txtName.setText(doctor.getName());
+        txtContact.setText(doctor.getContact_details());
+        txtQuali.setText(doctor.getQualifications());
+        txtSpeciality.setText(doctor.getSpeciality());
+        datesavailable.setPromptText(doctor.getAvailabilty());
+
     }
     public void loadTitles(){
         ObservableList<String> titleLists= FXCollections.observableArrayList();
